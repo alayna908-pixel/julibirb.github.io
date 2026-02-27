@@ -1,0 +1,314 @@
+/* style.css */
+/* Candycore + chocolate + glitter stars */
+
+:root{
+  --bg1:#ff4fb6;
+  --bg2:#ff9ad5;
+  --bg3:#7df7ff;
+  --choc:#3a1a12;
+  --choc2:#5b2a1f;
+  --cream:#fff7fb;
+  --ink:#2b0f0a;
+
+  --pink:#ff3ea5;
+  --hotpink:#ff1493;
+  --purple:#9b5cff;
+  --blue:#2fd7ff;
+  --mint:#42ffb9;
+  --lemon:#ffe44d;
+
+  --shadow: 0 18px 40px rgba(0,0,0,.25);
+}
+
+*{ box-sizing:border-box; }
+
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: "Fredoka", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink);
+  line-height:1.45;
+
+  /* base candy gradient */
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.55) 0 12%, transparent 13%),
+    radial-gradient(circle at 70% 15%, rgba(255,255,255,.45) 0 10%, transparent 11%),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,.35) 0 12%, transparent 13%),
+    linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 35%, var(--bg3) 100%);
+
+  /* sprinkle confetti overlay (pure CSS) */
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* sprinkle layer */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.55;
+  mix-blend-mode:overlay;
+
+  background:
+    radial-gradient(circle, #ff3b3b 0 3px, transparent 4px) 20px 30px / 160px 160px,
+    radial-gradient(circle, #34d9ff 0 3px, transparent 4px) 70px 90px / 170px 170px,
+    radial-gradient(circle, #ffee55 0 3px, transparent 4px) 110px 40px / 190px 190px,
+    radial-gradient(circle, #77ff8a 0 3px, transparent 4px) 10px 120px / 180px 180px,
+    radial-gradient(circle, #b45bff 0 3px, transparent 4px) 140px 120px / 200px 200px;
+  filter: blur(.2px);
+}
+
+/* star glitter layer (HTML div .stars) */
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.65;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 55% 10%, rgba(255,255,255,.9) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 80% 35%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 10% 70%, rgba(255,255,255,.9) 0 1.8px, transparent 3px),
+    radial-gradient(circle at 65% 78%, rgba(255,255,255,.9) 0 2.2px, transparent 3px),
+    radial-gradient(circle at 90% 85%, rgba(255,255,255,.9) 0 1.6px, transparent 3px);
+  animation: twinkle 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle{
+  from{ opacity:.45; filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+  to{ opacity:.85; filter: drop-shadow(0 0 6px rgba(255,255,255,.65)); }
+}
+
+/* layout container */
+.container{
+  width:min(900px, 92vw);
+  margin: 34px auto 60px;
+  padding: 22px 18px 26px;
+
+  /* frosted candy panel */
+  background: rgba(255,247,251,.86);
+  border-radius: 26px;
+
+  border: 4px solid rgba(58,26,18,.9);
+  box-shadow: var(--shadow);
+
+  position:relative;
+}
+
+/* chocolate drip top */
+.container::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-18px;
+  height:44px;
+  background: linear-gradient(180deg, var(--choc2) 0%, var(--choc) 100%);
+  border-radius: 24px 24px 18px 18px;
+  border: 4px solid rgba(58,26,18,.9);
+  border-bottom:none;
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+}
+
+/* little drips */
+.container::after{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  top:14px;
+  height:34px;
+  background:
+    radial-gradient(closest-side, var(--choc) 92%, transparent 95%) 0 0 / 64px 34px repeat-x;
+  opacity:.95;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,.22));
+  pointer-events:none;
+}
+
+/* header */
+header{
+  padding-top: 26px; /* to clear drip */
+  text-align:center;
+}
+
+h1{
+  margin: 12px 0 6px;
+  font-size: clamp(26px, 4vw, 42px);
+  letter-spacing: .5px;
+  color: var(--choc);
+
+  text-shadow:
+    0 2px 0 rgba(255,255,255,.9),
+    0 6px 18px rgba(255,20,147,.25);
+}
+
+.subtitle{
+  margin: 0 0 12px;
+  font-weight: 500;
+  color: rgba(43,15,10,.75);
+}
+
+section{
+  margin: 18px 6px;
+  padding: 16px 16px 14px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.6);
+  border: 3px solid rgba(58,26,18,.75);
+  box-shadow: 0 12px 24px rgba(0,0,0,.12);
+}
+
+/* section titles */
+h2{
+  margin: 0 0 10px;
+  font-size: 22px;
+  letter-spacing: .2px;
+  color: var(--choc2);
+}
+
+/* profile block */
+.profile{
+  display:grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  align-items:center;
+}
+
+.icon{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 18px;
+
+  border: 4px solid rgba(58,26,18,.85);
+  box-shadow: 0 16px 26px rgba(0,0,0,.18);
+
+  /* candy frame */
+  background: linear-gradient(135deg, var(--pink), var(--lemon), var(--blue));
+}
+
+/* links */
+.links{
+  text-align:center;
+}
+
+.links .button{
+  display:block;
+  text-decoration:none;
+  margin: 10px auto;
+  width: min(520px, 100%);
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  color: #1e0a06;
+  font-weight: 700;
+  letter-spacing:.3px;
+
+  border: 3px solid rgba(58,26,18,.85);
+  box-shadow: 0 10px 18px rgba(0,0,0,.16);
+
+  transform: translateY(0);
+  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* different candy buttons (cycles through) */
+.links .button:nth-of-type(1){ background: linear-gradient(135deg, #ff5aa8, #ffd25a); }
+.links .button:nth-of-type(2){ background: linear-gradient(135deg, #7df7ff, #9b5cff); color:#100616; }
+.links .button:nth-of-type(3){ background: linear-gradient(135deg, #42ffb9, #ffe44d); }
+.links .button:nth-of-type(4){ background: linear-gradient(135deg, #ff3ea5, #2fd7ff); }
+
+.links .button::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle, rgba(255,255,255,.85) 0 3px, transparent 4px) 0 0 / 70px 70px;
+  opacity:.35;
+  transform: rotate(12deg);
+}
+
+.links .button:hover{
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 16px 26px rgba(0,0,0,.22);
+  filter: saturate(1.15) contrast(1.05);
+}
+
+.links .button:active{
+  transform: translateY(0) scale(.99);
+}
+
+/* gallery grid */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+}
+
+.grid img{
+  width:100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 16px;
+
+  border: 3px solid rgba(58,26,18,.8);
+  box-shadow: 0 14px 22px rgba(0,0,0,.16);
+  background: rgba(255,255,255,.55);
+  transition: transform .12s ease, filter .12s ease;
+}
+
+.grid img:hover{
+  transform: translateY(-2px) scale(1.01);
+  filter: saturate(1.15);
+}
+
+/* favorites list */
+.favorites ul{
+  margin: 0;
+  padding-left: 22px;
+}
+
+.favorites li{
+  margin: 6px 0;
+}
+
+/* footer */
+footer{
+  text-align:center;
+  margin-top: 18px;
+  padding-top: 6px;
+  color: rgba(43,15,10,.75);
+}
+
+footer a{
+  color: var(--hotpink);
+  font-weight:700;
+  text-decoration:none;
+}
+
+footer a:hover{
+  text-decoration:underline;
+}
+
+/* responsive tweaks */
+@media (max-width: 640px){
+  .container{
+    padding: 18px 14px 22px;
+  }
+  .profile{
+    grid-template-columns: 1fr;
+    text-align:center;
+  }
+  .icon{
+    margin: 0 auto;
+  }
+  .grid{
+    grid-template-columns: 1fr;
+  }
+  .grid img{
+    height: 210px;
+  }
+}
